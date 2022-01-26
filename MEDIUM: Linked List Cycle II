@@ -11,13 +11,13 @@ public:
     ListNode *detectCycle(ListNode *head) {
         ListNode *fast= head;
         ListNode* slow=head;
-        while(fast && fast->next)
+        while(fast && fast->next) // You can also use (fast && fast->next && fast->next->next) instead of this condition
         {
             fast=fast->next->next;
             slow=slow->next;
             if(fast==slow) break;
         }
-        if(!(fast&&fast->next)) return NULL;
+        if(!(fast&&fast->next)) return NULL; // use the same condition that you used in the loop
         fast=head;
         while(fast!=slow)
         {
