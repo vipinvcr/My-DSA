@@ -1,0 +1,26 @@
+class Solution {
+public:
+    long long minimumTime(vector<int>& time, int totalTrips) {
+        long long high=1e14, low=0;
+        long long ans=high;
+        while(low<=high)
+        {
+            long long trips=0;
+            long long mid=(high+low)/2;
+            for(auto it: time)
+            {
+                trips=trips+(mid/it);
+            }
+            if(trips>=totalTrips)
+            {
+                high=mid-1;
+                ans=mid;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+};
